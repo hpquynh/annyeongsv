@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .pt-5
+    .mw-300.block-center
+      h4.title Add new word
+      form(id='formAdd' action='/add' method='post')
+        .form-group
+          label(for='inputLang1') English
+          input#inputLang1.form-control(type='text', placeholder='Enter English', name='lang1')
+        .form-group
+          label(for='inputLang2') Korean
+          input#inputLang2.form-control(type='text', placeholder='Enter Korean',name='lang2')
+        .text-center
+          button.btn.btn-primary.mw-300.col-12(type='submit') Add
+    h5.text-center.mt-20 Word list
+    ul.block-center.list-unstyle.mt-20.mw-400(id='list')
+      each val, uuid in values
+        li.mt-10.clearfix(id=uuid)
+          div.pull-left
+            div=val.en
+            div=val.kr
+          button.btn.btn-danger.pull-right(id="btn-" + uuid onClick='deleteItem(this.id)') Delete

@@ -10,4 +10,4 @@ ENV NODE_PATH=/app/node_modules
 
 COPY . /app/
 
-CMD node /app/bin/www
+#CMD node /app/bin/www

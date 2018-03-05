@@ -5,16 +5,18 @@ services:
   node_api:
     build: .
     environment:
-      - PORT=1337
       - ENV_IN=docker
     ports:
-      - "1337:1337"
       - "1338:1338"
     volumes:
       - ./logs:/app/logs
     networks:
       - db
+    command: npm run start
     restart: always
+    depends_on:
+      - mongo
+
 
   mongo:
     image: mongo:3.4.4
